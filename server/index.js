@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
+const userRoutes = require("./routes/user.route");
+
 const app = express();
 
 var corsOptions = {
@@ -28,6 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.json({ message: "Welcome." });
 });
+
+// users routes
+app.use("/users", userRoutes);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
